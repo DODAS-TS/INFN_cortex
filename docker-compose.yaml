@@ -1,9 +1,9 @@
 version: "3.7"
 services:
     haproxy:
-      image: haproxy
+      image: haproxy:2.0.5-alpine
       volumes:
-      - "./config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg"
+        - ./config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
       expose:
       - "8404"
       - "9009"
@@ -17,21 +17,21 @@ services:
       expose:
       - "9009"
       volumes:
-      - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
+        - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
     cortex2:
       image: cortexproject/cortex:master-0976147
       command: -config.file=/etc/single-process-config.yaml -ring.store=consul  -consul.hostname=consul:8500
       expose:
       - "9009"
       volumes:
-      - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
+        - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
     cortex3:
       image: cortexproject/cortex:master-0976147
       command: -config.file=/etc/single-process-config.yaml -ring.store=consul  -consul.hostname=consul:8500
       expose:
       - "9009"
       volumes:
-      - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
+        - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
     granfana:
       image: grafana/grafana
       ports:
@@ -45,11 +45,15 @@ services:
       expose:
       - "9090"
       volumes:
-      - "./config/prometheus.yml:/etc/prometheus/prometheus.yml"
+        - "./config/prometheus.yml:/etc/prometheus/prometheus.yml"
     cortex-tenant:
       image: dciangot/cortex-tenant
+      command:
+        - cortex-tenant
+        - -config
+        - /etc/cortex-tenant.yml
       expose:
       - "8080"
       volumes:
-      - "./config/cortex-tenant.yml:/etc/cortex-tenant.yml"
-      
+        - "./config/cortex-tenant.yml:/etc/cortex-tenant.yml"
+
