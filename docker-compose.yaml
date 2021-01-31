@@ -12,21 +12,21 @@ services:
       expose:
       - "8500"
     cortex1:
-      image: cortexproject/cortex
+      image: cortexproject/cortex:master-0976147
       command: -config.file=/etc/single-process-config.yaml -ring.store=consul  -consul.hostname=consul:8500
       expose:
       - "9009"
       volumes:
       - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
     cortex2:
-      image: cortexproject/cortex
+      image: cortexproject/cortex:master-0976147
       command: -config.file=/etc/single-process-config.yaml -ring.store=consul  -consul.hostname=consul:8500
       expose:
       - "9009"
       volumes:
       - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
     cortex3:
-      image: cortexproject/cortex
+      image: cortexproject/cortex:master-0976147
       command: -config.file=/etc/single-process-config.yaml -ring.store=consul  -consul.hostname=consul:8500
       expose:
       - "9009"
