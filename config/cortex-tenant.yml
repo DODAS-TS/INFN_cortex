@@ -1,0 +1,26 @@
+# Where to listen for incoming write requests from Prometheus
+listen: 0.0.0.0:8080
+# Profiling API, remove to disable
+listen_pprof: 0.0.0.0:7008
+# Where to send the modified requests (Cortex)
+target: http://haproxy:9009/api/prom/push 
+# Log level
+log_level: warn
+# HTTP request timeout
+timeout: 10s
+# Timeout to wait on shutdown to allow load balancers detect that we're going away.
+# During this period after the shutdown command the /alive endpoint will reply with HTTP 503.
+# Set to 0s to disable.
+timeout_shutdown: 10s
+
+tenant:
+  # Which label to look for the tenant information
+  label: tenant
+  # Whether to remove the tenant label from the request
+  label_remove: true
+  # To which header to add the tenant ID
+  header: X-Scope-OrgID
+  # Which tenant ID to use if the label is missing in any of the timeseries
+  # If this is not set or empty then the write request with missing tenant label
+  # will be rejected with HTTP code 400
+  default: foobar
