@@ -5,7 +5,7 @@
 
 # Disable the requirement that every request to Cortex has a
 # X-Scope-OrgID header. `fake` will be substituted in instead.
-auth_enabled: false
+auth_enabled: true
 
 server:
   http_listen_port: 9009

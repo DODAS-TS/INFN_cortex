@@ -37,7 +37,7 @@ scrape_configs:
     static_configs:
     - targets: ['node-exporter:9100']
       labels:
-        tenant: test
+        tenant: dciangot
 
   - job_name: 'haproxy-exporter'
 
