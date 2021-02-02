@@ -50,9 +50,9 @@ services:
         - --set-xauthrequest=true
         - --email-domain=*
         - --cookie-secret=ZZZZZZZZZZZZZZZZ
-        - --oidc_issuer_url="https://iam-escape.cloud.cnaf.infn.it/"
-        - --client_id="__PUT_CLIENT_ID_HERE__"
-        - --client_secret="__PUT_CLIENT_SECRET_HERE__"
+        - --oidc-issuer-url=https://iam.cloud.infn.it/
+        - --client-id=__CLIENT_ID__
+        - --client-secret=__CLIENT_SECRET__
         - --pass-user-headers=true
       ports:
         - 4180:4180

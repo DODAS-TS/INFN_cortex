@@ -37,7 +37,7 @@ scrape_configs:
     static_configs:
     - targets: ['node-exporter:9100']
       labels:
-        tenant: dciangot
+        tenant: ciangottini@infn.it
 
   - job_name: 'haproxy-exporter'
 
