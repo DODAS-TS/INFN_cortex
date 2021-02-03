@@ -34,8 +34,8 @@ services:
         - "./config/single-process-config.yaml:/etc/single-process-config.yaml"
     grafana:
       image: grafana/grafana
-      expose:
-        - "3000"
+      ports:
+        - "3000:3000"
       volumes:
         - "./config/grafana.ini:/etc/grafana/grafana.ini"
     oauth2-proxy:
@@ -52,7 +52,7 @@ services:
         - --cookie-secret=ZZZZZZZZZZZZZZZZ
         - --oidc-issuer-url=https://iam.cloud.infn.it/
         - --client-id=__CLIENT_ID__
-        - --client-secret=__CLIENT_SECRET__
+        - --client-secret=__CLIENT_ID__
         - --pass-user-headers=true
       ports:
         - 4180:4180
